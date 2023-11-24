@@ -1,7 +1,62 @@
 ---
-import Base from '@layouts/Base.astro';
+import Base from "@layouts/Base.astro";
+
+interface Props {
+  title: string;
+  url: string;
+  description: string;
+  pubDate: string;
+}
+
+const { title, description, url, pubDate } = Astro.props;
 ---
 
-<Base>
+<Base title="test">
+  <div class="body-container">
+    <h1>
+      <a href={url}>
+        {title}
+      </a>
+    </h1>
+
+    <p>
+      <i>
+        <a href={url}>
+          <time datetime="{{ page.date | date: '%Y-%m-%dT%H:%M:%SZ' }}">
+            {pubDate}
+          </time>
+        </a>
+        <!-- {%- for tag in page.tags -%} -->
+        <!-- {{- " " -}}{{- tag -}} -->
+        <!-- {%- endfor -%} -->
+      </i>
+      <article>
+        <slot />
+      </article>
+      <!-- <p> -->
+      <!--     {% if page.custom_js %} -->
+      <!--     {% for file in page.custom_js %} -->
+      <!--     <script type="text/javascript" src="{{ site.baseurl }}/assets/js/{{ file }}"></script> -->
+      <!--     {% endfor %} -->
+      <!--     {% endif %} -->
+      <!--     {% if layout.medium_zoom %} -->
+      <!--     <script crossorigin="anonymous" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" -->
+      <!--             src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script> -->
+      <!--     <script type="text/javascript"> -->
+      <!--         mediumZoom("[data-zoomable]", {background: "#0e0e0e"}) -->
+      <!--     </script> -->
+      <!--     {% endif %} -->
+    </p>
+  </div>
+
+  <hr />
+
+  <!-- <p style="text-align: center;"> -->
+  <!--     <a href="/feed.xml">Atom</a> | -->
+  <!--     <span id="commit-id" class="build-revision"><a -->
+  <!--             href="{{ site.github.repository_url }}/commit/{{ site.github.build_revision | default: site.env.GITHUB_SHA }}"> -->
+  <!--         #{{ site.github.build_revision | default: site.env.GITHUB_SHA | truncate: 7, "" }} -->
+  <!--     </a></span> -->
+  <!-- </p> -->
   <slot />
 </Base>

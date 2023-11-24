@@ -1,0 +1,22 @@
+---
+import Base from "@layouts/Base.astro";
+import Summary from "@components/Summary.astro";
+const posts = await Astro.glob("/src/pages/posts/*.md");
+interface Props {
+  pubDate: Date;
+}
+---
+
+<Base>
+  {
+    posts.map((post) => (
+      <Summary
+        url={post.url || "unknown"}
+        description={post.frontmatter.description}
+        date={new Date()}
+        title={post.frontmatter.title}
+        tags={post.frontmatter.tags}
+      />
+    ))
+  }
+</Base>

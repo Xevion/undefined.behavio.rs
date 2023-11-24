@@ -3,11 +3,11 @@ import '@styles/global.scss';
 import '@styles/fonts.scss';
 
 interface Props {
-	title: string;
+	title?: string;
 }
 
 const { title } = Astro.props;
-const titleTag = title != null ? `${title} | xevion.blog` : 'xevion.blog'; 
+const titleTag = title != undefined ? `${title} | xevion.blog` : 'xevion.blog'; 
 const isWide = false;
 ---
 <!doctype html>
@@ -15,11 +15,7 @@ const isWide = false;
     <head>
         <meta charset="utf-8">
         <meta content="width=device-width" name="viewport">
-        <link as="style" href="/assets/main.css" rel="preload">
-        <link href="/assets/main.css" rel="stylesheet">
         <!-- build-commit-id: {{ site.github.build_revision | default: site.env.GITHUB_SHA }} -->
-        <!--    <link rel="stylesheet" href="/assets/print.css" media="print">-->
-        <link href="/assets/rouge.css" rel="stylesheet">
         <title>
       		{titleTag}
         </title>
@@ -59,41 +55,41 @@ const isWide = false;
         <!-- {% endif %} -->
     </head>
     <body class={isWide ? 'wide' : ''}>
-    		<slot name="header">
-    		<header id="header">
-    <div class="stack" style="--stacks: 3;">
-        <span style="--index: 0;">ryan walters</span>
-        <span style="--index: 1;">ryan walters</span>
-        <span style="--index: 2;">ryan walters</span>
-    </div>
-</header>
-<nav>
-    <a href="/">~/</a>
-    <span class="no-select">:</span>
-    <a href="https://xevion.dev">~/about/</a>
-    <span class="no-select">:</span>
-    <a href="https://xevion.dev/projects">~/projects/</a>
-    <span class="no-select">:</span>
-    <a href="https://xevion.dev/resume">~/resume/</a>
-</nav>		
-    </slot>
-        <slot />
+        <slot name="header">
+            <header id="header">
+                <div class="stack" style="--stacks: 3;">
+                    <span style="--index: 0;">ryan walters</span>
+                    <span style="--index: 1;">ryan walters</span>
+                    <span style="--index: 2;">ryan walters</span>
+                </div>
+            </header>
+        </slot>
+        <nav>
+            <a href="/">~/</a>
+            <span class="no-select">:</span>
+            <a href="https://xevion.dev">~/about/</a>
+            <span class="no-select">:</span>
+            <a href="https://xevion.dev/projects">~/projects/</a>
+            <span class="no-select">:</span>
+            <a href="https://xevion.dev/resume">~/resume/</a>
+        </nav>		
+        <slot name="default">
     </body>
-    <script type="text/javascript">
-        /** Is all of this too much effort to make the animation play in just the right way? **/
-        window.onbeforeunload = function(){
-            /** Remember the origin so it can be checked for page reloads **/
-            sessionStorage.setItem("origin", window.location.href);
-        }
-
-        window.onload = function() {
-            /** Display the glitch effect on new page loads or reloads. **/
-            let glitch_seen = sessionStorage.getItem('glitch')
-            if (glitch_seen !== 'true' || window.location.href === sessionStorage.getItem("origin")) {
-                sessionStorage.setItem('glitch', 'true')
-                document.getElementById('header').firstElementChild.classList.add('glitch')
-            }
-            
-        }
-    </script>
+    <!-- <script type="text/javascript"> -->
+    <!--     /** Is all of this too much effort to make the animation play in just the right way? **/ -->
+    <!--     window.onbeforeunload = function(){ -->
+    <!--         /** Remember the origin so it can be checked for page reloads **/ -->
+    <!--         sessionStorage.setItem("origin", window.location.href); -->
+    <!--     } -->
+    <!---->
+    <!--     window.onload = function() { -->
+    <!--         /** Display the glitch effect on new page loads or reloads. **/ -->
+    <!--         let glitch_seen = sessionStorage.getItem('glitch') -->
+    <!--         if (glitch_seen !== 'true' || window.location.href === sessionStorage.getItem("origin")) { -->
+    <!--             sessionStorage.setItem('glitch', 'true') -->
+    <!--             document.getElementById('header').firstElementChild.classList.add('glitch') -->
+    <!--         } -->
+    <!--          -->
+    <!--     } -->
+    <!-- </script> -->
 </html>
