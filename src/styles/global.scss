@@ -1,7 +1,7 @@
 @import "glitch";
 @import "mixins";
 @import "helpers";
-@import "code";
+// @import "code";
 
 // Dark-mode selections
 ::selection,
@@ -231,14 +231,9 @@ nav {
 }
 
 .post_date {
-  float: right;
-  margin: 0 0 1em 2em;
-  line-height: 1;
-  text-align: center;
-  text-transform: uppercase;
-  border: thin solid white;
-  border-width: thin 0;
-  padding: 0.25em 0;
+  // border
+  // border: thin solid white;
+  // border-width: thin 0;
 
   a {
     text-decoration: none;
