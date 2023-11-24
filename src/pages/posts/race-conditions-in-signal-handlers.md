@@ -3,6 +3,7 @@ title: "Race Conditions in Signal Handlers"
 pubDate: 2023-07-26 16:08:12 -0500
 description: "Signals offer a unique, low-level way of communicating with processes. But under certain circumstances, they can kill processes, even when they shouldn't."
 layout: "@layouts/Post.astro"
+tags: ["tar", "signals", "interrupt", "handler", "process", "unix", "race-condition"]
 ---
 
 Signals offer a unique, low-level way of communicating with processes. But under certain circumstances, they can kill
