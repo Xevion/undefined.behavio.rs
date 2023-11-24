@@ -1,0 +1,38 @@
+---
+interface Props {
+    url: string;
+    date: Date;
+    title: string;
+    tags: string[];
+    description: string;
+}
+
+const { url, date, title, tags, description } = Astro.props;
+---
+<div class="clear-both">
+    <div class="post_date text-center uppercase mb-4 ml-8 py-1 border-y border-white leading-4 float-right">
+        <a href={url}>
+            <time datetime={date.toISOString()}>
+                <span class="month">
+                    { date.getMonth() }
+                </span>
+                <br>
+                <span class="date">
+                    { date.getDay() }
+                </span>
+                <br>
+                <span class="year">
+                    { date.getFullYear() }</span>
+            </time>
+        </a>
+    </div>
+    <div class="post_combo">
+        <h2>
+            <a href={url}>{ title }</a>
+        </h2>
+        <i>
+            { tags.join(" ")}
+        </i>
+    </div>
+{ description }
+</div>
