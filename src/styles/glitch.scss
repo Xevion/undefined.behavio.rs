@@ -8,8 +8,7 @@ header {
     grid-template-columns: 1fr;
 
     &.glitch span {
-      animation:
-        glitch 340ms cubic-bezier(0.46, 0.29, 0, 1.24) 1 backwards
+      animation: glitch 340ms cubic-bezier(0.46, 0.29, 0, 1.24) 1 backwards
           calc(var(--index) * 120ms),
         jitter 2000ms ease infinite 2s alternate-reverse;
     }
@@ -44,9 +43,7 @@ header {
   0% {
     opacity: 0;
     transform: translateX(-50%);
-    text-shadow:
-      -2px 3px 0 red,
-      2px -3px 0 blue;
+    text-shadow: -2px 3px 0 red, 2px -3px 0 blue;
   }
   60% {
     opacity: 0.5;
@@ -55,9 +52,7 @@ header {
   80% {
     transform: none;
     opacity: 1;
-    text-shadow:
-      2px -3px 0 red,
-      -2px 3px 0 blue;
+    text-shadow: 2px -3px 0 red, -2px 3px 0 blue;
   }
   100% {
     text-shadow: none;
@@ -66,15 +61,11 @@ header {
 
 @keyframes jitter {
   0% {
-    text-shadow:
-      -2px 3px 0 red,
-      2px -3px 0 blue;
+    text-shadow: -2px 3px 0 red, 2px -3px 0 blue;
     transform: translate(var(--glitch-translate));
   }
   2% {
-    text-shadow:
-      2px -3px 0 red,
-      -2px 3px 0 blue;
+    text-shadow: 2px -3px 0 red, -2px 3px 0 blue;
   }
   4%,
   100% {
