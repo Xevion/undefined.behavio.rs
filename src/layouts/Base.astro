@@ -2,19 +2,23 @@
 import '@styles/global.scss';
 import '@styles/fonts.scss';
 
+const repository_url = import.meta.env.PUBLIC_GITHUB_REPOSITORY;
+const build_revision = import.emeta.env.VERCEL_GIT_COMMIT_SHA || import.meta.env.PUBLIC_GITHUB_SHA;
+
 interface Props {
 	title?: string;
 }
 
 const { title } = Astro.props;
-const titleTag = title != undefined ? `${title} | xevion.blog` : 'xevion.blog'; 
+const titleTag = title != undefined ? `${title} | xevion.blog` : 'xevion.blog';
+console.log({ repository_url, build_revision, titleTag });
 ---
 <!doctype html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
         <meta content="width=device-width" name="viewport">
-        <!-- build-commit-id: {{ site.github.build_revision | default: site.env.GITHUB_SHA }} -->
+        <meta name="build-commit-id" content={build_revision} />
         <title>
       		{titleTag}
         </title>
@@ -41,12 +45,6 @@ const titleTag = title != undefined ? `${title} | xevion.blog` : 'xevion.blog';
         <!--         <meta content="summary" name="twitter:card"> -->
         <!--     {%- endif -%} -->
         <!-- {%- endif %} -->
-        <!-- Hide site using inline styling until CSS loads -->
-        <!-- <style> -->
-        <!-- html, body { -->
-        <!--     visibility: hidden; -->
-        <!-- } -->
-        <!-- </style> -->
         <!--  Prevent FireFox from displaying FOUC with fake script tag.  -->
         <!-- <script>0</script> -->
         <!-- {% if page.layout == "default" or page.layout == "posts" %} -->
@@ -95,4 +93,12 @@ const titleTag = title != undefined ? `${title} | xevion.blog` : 'xevion.blog';
     <!--          -->
     <!--     } -->
     <!-- </script> -->
+    <p class="text-center">
+    <a href="/feed.xml">Atom</a> |
+      <span id="commit-id" class="build-revision">
+        <a href={`${repository_url}/commit/${build_revision}`}>
+        #{build_revision}
+    </a>
+    </span>
+    </p>
 </html>
