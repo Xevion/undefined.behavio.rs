@@ -13,9 +13,9 @@
   }
 }
 
-@include font("fonts/cmunrm.woff2", "CMU Serif", normal, normal, U+0-10FFFF);
+@include font("/fonts/cmunrm.woff2", "CMU Serif", normal, normal, U+0-10FFFF);
 @include font(
-  "fonts/-cmunrm.woff2",
+  "/fonts/-cmunrm.woff2",
   "CMU Serif",
   normal,
   normal,
@@ -32,9 +32,9 @@
   U+2122,
   U+1F4D6
 );
-@include font("fonts/cmunti.woff2", "CMU Serif", normal, italic, U+0-10FFFF);
+@include font("/fonts/cmunti.woff2", "CMU Serif", normal, italic, U+0-10FFFF);
 @include font(
-  "fonts/-cmunti.woff2",
+  "/fonts/-cmunti.woff2",
   "CMU Serif",
   normal,
   italic,
@@ -51,9 +51,9 @@
   U+2122,
   U+1F4D6
 );
-@include font("fonts/cmunbx.woff2", "CMU Serif", bold, normal, U+0-10FFFF);
+@include font("/fonts/cmunbx.woff2", "CMU Serif", bold, normal, U+0-10FFFF);
 @include font(
-  "fonts/-cmunbx.woff2",
+  "/fonts/-cmunbx.woff2",
   "CMU Serif",
   bold,
   normal,
@@ -70,9 +70,9 @@
   U+2122,
   U+1F4D6
 );
-@include font("fonts/cmunbi.woff2", "CMU Serif", bold, italic, U+0-10FFFF);
+@include font("/fonts/cmunbi.woff2", "CMU Serif", bold, italic, U+0-10FFFF);
 @include font(
-  "fonts/-cmunbi.woff2",
+  "/fonts/-cmunbi.woff2",
   "CMU Serif",
   bold,
   italic,
@@ -90,14 +90,14 @@
   U+1F4D6
 );
 @include font(
-  "fonts/cmuntt.woff2",
+  "/fonts/cmuntt.woff2",
   "CMU Typewriter Text",
   normal,
   normal,
   U+0-10FFFF
 );
 @include font(
-  "fonts/-cmuntt.woff2",
+  "/fonts/-cmuntt.woff2",
   "CMU Typewriter Text",
   normal,
   normal,
