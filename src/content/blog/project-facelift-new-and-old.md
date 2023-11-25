@@ -1,6 +1,5 @@
 ---
 title:  "Project Facelift, New and Old"
-layout: "@layouts/Post.astro"
 pubDate:   2021-02-25 16:41:41 -0600
 tags:   ["projects", "photography", "update"]
 preview_image: "https://raw.githubusercontent.com/Xevion/Paths/master/.media/banner.png"

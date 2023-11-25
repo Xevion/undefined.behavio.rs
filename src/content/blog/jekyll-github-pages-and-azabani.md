@@ -1,7 +1,6 @@
 ---
 title:  "Jekyll, GitHub Pages, and Azabani"
 pubDate:   2020-12-04 13:16:22 -0600
-layout: "@layouts/Post.astro"
 tags: ["jekyll", "github-pages"]
 description: "This is my first time trying to create a proper blog, and my second time using GitHub pages. How did it turn out?"
 ---

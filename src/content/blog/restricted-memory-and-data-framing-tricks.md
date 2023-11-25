@@ -1,6 +1,5 @@
 ---
 title:  "Restricted Memory & Data Framing Tricks"
-layout: "@layouts/Post.astro"
 pubDate:   2022-07-16 13:51:00 -0500
 tags:   ["c", "memory", "embedded", "ti", "msp430", "union"]
 description: "Tips and tricks I learned about handling restricted memory while working on microcontrollers at my first internship"

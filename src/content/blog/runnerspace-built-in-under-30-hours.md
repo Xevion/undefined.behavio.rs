@@ -1,5 +1,4 @@
 ---
-layout: "@layouts/Post.astro"
 title:  "Runnerspace, Built in Under 30 Hours"
 pubDate:   2022-03-29 13:56:22 -0600
 tags:   ["flask", "hackathon", "utsa", "rowdyhacks", "projects"]

@@ -9,7 +9,7 @@ const posts = await getCollection("blog");
   {
     posts.map((post) => (
       <Summary
-        url={post.slug}
+        url={`/posts/${post.slug}`}
         description={post.data.description}
         date={new Date()}
         title={post.data.title}

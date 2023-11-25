@@ -1,28 +1,24 @@
 ---
 import Base from "@layouts/Base.astro";
+import { type CollectionEntry } from 'astro:content';
 
 interface Props {
-  title: string;
-  url: string;
-  description: string;
-  pubDate: string;  
+  post: CollectionEntry<'blog'>;
 }
-
-const { frontmatter } = Astro.props;
-const { title, url, pubDate, tags } = frontmatter;
+const { post } = Astro.props;
+const { title, pubDate, tags } = post.data;
 ---
-
 <Base title={title}>
   <div class="body-container">
     <h1>
-      <a href={url}>
+      <a href={post.slug}>
         {title}
       </a>
     </h1>
 
     <p>
       <i>
-        <a href={url}>
+        <a href={post.slug}>
           <time datetime="{{ page.date | date: '%Y-%m-%dT%H:%M:%SZ' }}">
             {pubDate}
           </time>
