@@ -8,7 +8,6 @@ interface Props {
 
 const { title } = Astro.props;
 const titleTag = title != undefined ? `${title} | xevion.blog` : 'xevion.blog'; 
-const isWide = false;
 ---
 <!doctype html>
 <html lang="en">
@@ -54,7 +53,7 @@ const isWide = false;
         <!--     <script src="/assets/js/custom.js"></script> -->
         <!-- {% endif %} -->
     </head>
-    <body class={isWide ? 'wide' : ''}>
+    <body class="flex-col align-middle w-full max-w-full">
         <slot name="header">
             <header id="header">
                 <div class="stack" style="--stacks: 3;">
@@ -64,16 +63,20 @@ const isWide = false;
                 </div>
             </header>
         </slot>
-        <nav>
+        <nav class="text-center text-xl text-[#808080] [&>a]:text-white [&>a]:underline [&>span]:select-none">
             <a href="/">~/</a>
-            <span class="no-select">:</span>
+            <span>:</span>
             <a href="https://xevion.dev">~/about/</a>
-            <span class="no-select">:</span>
+            <span>:</span>
             <a href="https://xevion.dev/projects">~/projects/</a>
-            <span class="no-select">:</span>
+            <span>:</span>
             <a href="https://xevion.dev/resume">~/resume/</a>
-        </nav>		
-        <slot name="default">
+        </nav>
+        <div class="max-w-screen-lg">
+            <article>
+                <slot name="default" />
+            </article>
+        </div>
     </body>
     <!-- <script type="text/javascript"> -->
     <!--     /** Is all of this too much effort to make the animation play in just the right way? **/ -->
