@@ -1,21 +1,19 @@
 ---
+import { getCollection, getEntry } from "astro:content";
 import Base from "@layouts/Base.astro";
 import Summary from "@components/Summary.astro";
-const posts = await Astro.glob("/src/pages/posts/*.md");
-interface Props {
-  pubDate: Date;
-}
+const posts = await getCollection("blog");
 ---
 
 <Base>
   {
     posts.map((post) => (
       <Summary
-        url={post.url || "unknown"}
-        description={post.frontmatter.description}
+        url={post.slug}
+        description={post.data.description}
         date={new Date()}
-        title={post.frontmatter.title}
-        tags={post.frontmatter.tags}
+        title={post.data.title}
+        tags={post.data.tags}
       />
     ))
   }

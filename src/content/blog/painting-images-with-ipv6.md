@@ -1,7 +1,7 @@
 ---
 layout: "@layouts/Post.astro"
 title: "Painting Images with IPv6"
-date: 2023-04-14 13:07:43 -0500
+pubDate: 2023-04-14 13:07:43 -0500
 tags: ["ipv6", "python", "asyncio", "websocket", "PIL"]
 description: "Have you ever painted images with IPv6? I found out how in 30 minutes."
 ---

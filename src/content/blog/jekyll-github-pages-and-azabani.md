@@ -9,7 +9,7 @@ description: "This is my first time trying to create a proper blog, and my secon
 This is my first time trying to create a proper blog, and my second time using GitHub pages, [the first][github-pages-resume] less than 2 weeks earlier.
 
 As a cheap high school student with zero income and expensive subscriptions, it's obvious that I wouldn't try to brunt
-the cost of any sort of subscription for a site I <span style="white-space: nowrap;">barely use - well</span>, not anymore, at least.
+the cost of any sort of subscription for a site I <span class="nowrap">barely use - well</span>, not anymore, at least.
 
 Jekyll is pretty cool - I'm really having fun learning new web tech (like Vue, BrowserSync, Sass). The syntax of the header is something new, but the templating language's filters are something I'm already familiar with,
 using Jinja with Flask and Django already (great, a third dialect of both similar and completely different filters to get used to!).
