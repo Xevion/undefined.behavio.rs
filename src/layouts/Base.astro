@@ -2,8 +2,8 @@
 import '@styles/global.scss';
 import '@styles/fonts.scss';
 
-const repository_url = import.meta.env.PUBLIC_GITHUB_REPOSITORY;
-const build_revision = import.emeta.env.VERCEL_GIT_COMMIT_SHA || import.meta.env.PUBLIC_GITHUB_SHA;
+const repository_url = `https://github.com/${import.meta.env.PUBLIC_VERCEL_GIT_REPO_SLUG}/${import.meta.env.PUBLIC_VERCEL_GIT_REPO_OWNER}/`
+const build_revision = import.meta.env.PUBLIC_VERCEL_GIT_COMMIT_SHA;
 
 interface Props {
 	title?: string;
@@ -97,7 +97,7 @@ console.log({ repository_url, build_revision, titleTag });
     <a href="/feed.xml">Atom</a> |
       <span id="commit-id" class="build-revision">
         <a href={`${repository_url}/commit/${build_revision}`}>
-        #{build_revision}
+        #{build_revision.slice(0, 7)}
     </a>
     </span>
     </p>
