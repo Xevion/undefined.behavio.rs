@@ -1,6 +1,7 @@
 ---
 import '@styles/global.scss';
 import '@styles/fonts.scss';
+import { ViewTransitions } from 'astro:transitions';
 
 const repository_url = `https://github.com/${import.meta.env.PUBLIC_VERCEL_GIT_REPO_SLUG}/${import.meta.env.PUBLIC_VERCEL_GIT_REPO_OWNER}/`
 const build_revision = import.meta.env.PUBLIC_VERCEL_GIT_COMMIT_SHA;
@@ -11,7 +12,6 @@ interface Props {
 
 const { title } = Astro.props;
 const titleTag = title != undefined ? `${title} | xevion.blog` : 'xevion.blog';
-console.log({ repository_url, build_revision, titleTag });
 ---
 <!doctype html>
 <html lang="en">
@@ -28,6 +28,7 @@ console.log({ repository_url, build_revision, titleTag });
         <link as="font" crossorigin href="/fonts/-cmuntt.woff2" rel="preload">
         <link as="font" crossorigin href="/fonts/-cmunti.woff2" rel="preload">
         <link href="/feed.xml" rel="alternate" type="application/atom+xml">
+        <ViewTransitions />
         <!-- {page._preview_description and page.title or page.name == "index.html"} -->
         <!--     <meta content="website" property="og:type"> -->
         <!--     <meta property="og:url" content="{{ page.url | absolute_url }}"> -->
