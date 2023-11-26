@@ -18,7 +18,7 @@ const { url, date, title, tags, description } = Astro.props;
                 </span>
                 <br>
                 <span class="text-[2em] leading-7">
-                    { date.getDay() }
+                    { date.getDate().toString().padStart(2, "0") }
                 </span>
                 <br>
                 <span class="year">
