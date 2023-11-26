@@ -14,10 +14,10 @@ const { url, date, title, tags, description } = Astro.props;
         <a href={url}>
             <time datetime={date.toISOString()}>
                 <span class="month">
-                    { date.getMonth() }
+                    { date.toLocaleDateString("en-US", {month: "short"}) }
                 </span>
                 <br>
-                <span class="date">
+                <span class="text-[2em] leading-7">
                     { date.getDay() }
                 </span>
                 <br>
