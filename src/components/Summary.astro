@@ -27,11 +27,13 @@ const { url, date, title, tags, description } = Astro.props;
         </a>
     </div>
     <div class="post_combo">
-        <h2>
-            <a href={url}>{ title }</a>
-        </h2>
-        <i>
-            { tags.join(" ")}
+        <h2 class="underline mr-1"><a href={url}>{ title }</a></h2>
+        <i class="space-x-2">
+            {tags.map((tag) => (
+                <a href={`/tags/${tag}`}>
+                    { tag }
+                </a>
+            ))}
         </i>
     </div>
 { description }
