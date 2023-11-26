@@ -2,7 +2,6 @@ pre,
 code {
   font-family: "CMU Typewriter Text", monospace;
   font-size: 0.8em;
-  font-style: normal !important;
 }
 
 // Inline code styling
@@ -29,8 +28,12 @@ a > code {
 
 pre {
   background: rgb(25, 25, 25);
-  border-radius: 7px;
+  border-radius: 5px;
   padding: 1em;
+  
+  &.astro-code {
+    background-color: #191919 !important;
+  }
 
   code {
     font-size: 1em;
