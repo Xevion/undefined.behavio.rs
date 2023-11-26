@@ -10,10 +10,10 @@ interface Props {
 const { url, date, title, tags, description } = Astro.props;
 ---
 <div class="clear-both">
-    <div class="post_date text-center uppercase mb-4 ml-8 py-1 border-y border-white leading-4 float-right">
+    <div class="text-center uppercase mb-4 ml-8 py-1 border-y border-white leading-4 float-right">
         <a href={url}>
             <time datetime={date.toISOString()}>
-                <span class="month">
+                <span>
                     { date.toLocaleDateString("en-US", {month: "short"}) }
                 </span>
                 <br>
@@ -21,13 +21,13 @@ const { url, date, title, tags, description } = Astro.props;
                     { date.getDate().toString().padStart(2, "0") }
                 </span>
                 <br>
-                <span class="year">
+                <span>
                     { date.getFullYear() }</span>
             </time>
         </a>
     </div>
-    <div class="post_combo">
-        <h2 class="underline mr-1"><a href={url}>{ title }</a></h2>
+    <div class="mt-3">
+        <h2 class="font-medium inline underline mr-1"><a href={url}>{ title }</a></h2>
         <i class="space-x-2">
             {tags.map((tag) => (
                 <a href={`/tags/${tag}`}>

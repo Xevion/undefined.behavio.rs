@@ -1,7 +1,7 @@
 @import "glitch";
 @import "mixins";
 @import "helpers";
-// @import "code";
+@import "code";
 
 // Dark-mode selections
 ::selection,
@@ -217,28 +217,6 @@ sup {
 
 nav {
   font-family: "CMU Typewriter Text", monospace, monospace;
-}
-
-.post_date {
-  // border
-  // border: thin solid white;
-  // border-width: thin 0;
-
-  a {
-    text-decoration: none;
-  }
-
-  .date {
-    font-size: 2em;
-  }
-}
-
-.post_combo {
-  margin-top: 0.75em;
-
-  > h2 {
-    display: inline;
-  }
 }
 
 .post_image {
