@@ -76,6 +76,14 @@ const titleTag = title != undefined ? `${title} | xevion.blog` : 'xevion.blog';
                 <slot name="default" />
             </article>
         </div>
+        <p class="text-center">
+            <a href="/feed.xml">Atom</a>
+            |
+            <a href={`${repository_url}/commit/${build_revision}`}>
+              <span id="commit-id" class="build-revision" style={{color: '#' + build_revision.slice(0, 6)}}>#{build_revision.slice(0, 7)}
+                </span>
+            </a>
+        </p>
     </body>
     <!-- <script type="text/javascript"> -->
     <!--     /** Is all of this too much effort to make the animation play in just the right way? **/ -->
@@ -94,12 +102,5 @@ const titleTag = title != undefined ? `${title} | xevion.blog` : 'xevion.blog';
     <!--          -->
     <!--     } -->
     <!-- </script> -->
-    <p class="text-center">
-    <a href="/feed.xml">Atom</a> |
-      <span id="commit-id" class="build-revision">
-        <a href={`${repository_url}/commit/${build_revision}`}>
-        #{build_revision.slice(0, 7)}
-    </a>
-    </span>
-    </p>
+
 </html>
