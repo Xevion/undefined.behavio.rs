@@ -11,7 +11,7 @@ const posts = await getCollection("blog");
       <Summary
         url={`/posts/${post.slug}`}
         description={post.data.description}
-        date={new Date()}
+        date={post.data.pubDate}
         title={post.data.title}
         tags={post.data.tags}
       />
