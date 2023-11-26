@@ -3,6 +3,7 @@ import { getCollection, getEntry } from "astro:content";
 import Base from "@layouts/Base.astro";
 import Summary from "@components/Summary.astro";
 const posts = await getCollection("blog");
+posts.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
 ---
 
 <Base>
