@@ -16,10 +16,9 @@ Signals are a special, but very primitive way for processes to communicate funct
 a standardized interface available to 99.99% of programs run on UNIX systems (in existence). Interaction can be done
 with just the `kill` command.
 
-While the signals API can be quite bare bones and simple, it's technically much less complex compared to a network
-interface, usage of STDIN/STDOUT, a file, or even a shared memory segment. These other options might have a lot more
-features,
-but none of them are perfectly standardized, completely secure, or simple to use.
+While the signals API can be quite bare bones and simple, it's technically much less complex compared to a network interface, usage of `STDIN` & `STDOUT`, a file, or even a shared memory segment.
+
+These other options might have a lot more features, but none of them are perfectly standardized, completely secure, or simple to use.
 
 If you're looking to allow basic communication with your program for very specific use cases and don't need complexity
 or I/O, signals can be a great way to go.
