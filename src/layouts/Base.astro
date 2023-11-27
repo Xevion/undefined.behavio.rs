@@ -3,7 +3,7 @@ import '@styles/global.scss';
 import '@styles/fonts.scss';
 import { ViewTransitions } from 'astro:transitions';
 
-const repository_url = `https://github.com/${import.meta.env.PUBLIC_VERCEL_GIT_REPO_SLUG}/${import.meta.env.PUBLIC_VERCEL_GIT_REPO_OWNER}/`
+const repository_url = `https://github.com/${import.meta.env.PUBLIC_VERCEL_GIT_REPO_SLUG}/${import.meta.env.PUBLIC_VERCEL_GIT_REPO_OWNER}`
 const build_revision = import.meta.env.PUBLIC_VERCEL_GIT_COMMIT_SHA;
 
 interface Props {
@@ -53,15 +53,13 @@ const titleTag = title != undefined ? `${title} | xevion.blog` : 'xevion.blog';
         <!-- {% endif %} -->
     </head>
     <body class="flex-col align-middle w-full max-w-full">
-        <slot name="header">
-            <header class="text-5xl mt-2 mb-1 text-center lowercase">
-                <div class="stack" style="--stacks: 3;">
-                    <span style="--index: 0;">undefined behaviors</span>
-                    <span style="--index: 1;">undefined behaviors</span>
-                    <span style="--index: 2;">undefined behaviors</span>
-                </div>
-            </header>
-        </slot>
+        <header class="text-5xl mt-5 mb-3 text-center lowercase">
+            <div class="stack" style="--stacks: 3;">
+                <span style="--index: 0;">undefined behaviors</span>
+                <span style="--index: 1;">undefined behaviors</span>
+                <span style="--index: 2;">undefined behaviors</span>
+            </div>
+        </header>
         <nav class="text-center text-xl text-[#808080] [&>a]:text-white [&>a]:underline [&>span]:select-none">
             <a href="/">~/</a>
             <span>:</span>
