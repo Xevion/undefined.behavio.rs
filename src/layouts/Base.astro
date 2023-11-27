@@ -54,11 +54,11 @@ const titleTag = title != undefined ? `${title} | xevion.blog` : 'xevion.blog';
     </head>
     <body class="flex-col align-middle w-full max-w-full">
         <slot name="header">
-            <header id="header">
+            <header class="text-5xl mt-2 mb-1 text-center lowercase">
                 <div class="stack" style="--stacks: 3;">
-                    <span style="--index: 0;">ryan walters</span>
-                    <span style="--index: 1;">ryan walters</span>
-                    <span style="--index: 2;">ryan walters</span>
+                    <span style="--index: 0;">undefined behaviors</span>
+                    <span style="--index: 1;">undefined behaviors</span>
+                    <span style="--index: 2;">undefined behaviors</span>
                 </div>
             </header>
         </slot>
@@ -78,8 +78,7 @@ const titleTag = title != undefined ? `${title} | xevion.blog` : 'xevion.blog';
             <a href="/feed.xml">Atom</a>
             |
             <a href={`${repository_url}/commit/${build_revision}`}>
-              <span id="commit-id" class="build-revision" style={{color: '#' + build_revision.slice(0, 6)}}>#{build_revision.slice(0, 7)}
-                </span>
+              <span id="commit-id" style={{color: '#' + build_revision.slice(0, 6)}}>#{build_revision.slice(0, 7)}</span>
             </a>
         </p>
     </body>

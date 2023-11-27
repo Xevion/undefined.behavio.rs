@@ -59,31 +59,9 @@ body {
   align-items: center;
 }
 
-.body-container {
-  max-width: 46em;
-  margin: 0 1em;
-}
-
 p,
 table {
   margin: 0.5em 0;
-}
-
-header {
-  font-size: 4em;
-  text-align: center;
-  text-transform: lowercase;
-  letter-spacing: 0.1em;
-}
-
-@include for-size(tablet-portrait-up) {
-  header {
-    font-size: 3em;
-  }
-}
-
-header span {
-  letter-spacing: 0;
 }
 
 aside,
@@ -284,7 +262,7 @@ article {
   }
 }
 
-.build-revision {
+#commit-id {
   font-family: "CMU Typewriter Text", sans-serif;
 
   &:not(:hover) {

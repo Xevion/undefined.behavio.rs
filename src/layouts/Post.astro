@@ -9,7 +9,7 @@ const { post } = Astro.props;
 const { title, pubDate, tags } = post.data;
 ---
 <Base title={title}>
-  <div class="body-container">
+  <div class="max-w-3xl mx-4">
     <h1>
       <a href={post.slug}>
         {title}
@@ -23,8 +23,10 @@ const { title, pubDate, tags } = post.data;
             {pubDate}
           </time>
         </a>
-        <span>
-          { tags.join(" ")}
+        <span class="space-x-2">
+          {tags.map((tag) => (
+            <a href={`/tags/${tag}`}>{ tag }</a>
+        ))}
         </span>
       </i>
       <article>

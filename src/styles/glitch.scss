@@ -1,9 +1,6 @@
 header {
-  max-width: 100%;
-  width: 100%;
-
   .stack {
-    overflow: hidden;
+    // overflow: hidden;
     display: grid;
     grid-template-columns: 1fr;
 
@@ -17,7 +14,6 @@ header {
       font-weight: bold;
       grid-row-start: 1;
       grid-column-start: 1;
-      font-size: 4rem;
 
       --stack-height: calc(100% / var(--stacks) - 1px);
       --inverse-index: calc(calc(var(--stacks) - 1) - var(--index));
