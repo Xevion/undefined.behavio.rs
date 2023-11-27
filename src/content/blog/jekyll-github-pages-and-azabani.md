@@ -5,7 +5,7 @@ tags: ["jekyll", "github-pages"]
 description: "This is my first time trying to create a proper blog, and my second time using GitHub pages. How did it turn out?"
 ---
 
-This is my first time trying to create a proper blog, and my second time using GitHub pages, [the first][github-pages-resume] less than 2 weeks earlier.
+This is my first time trying to create a proper blog, and my second time using GitHub pages, the first less than 2 weeks earlier.
 
 As a cheap high school student with zero income and expensive subscriptions, it's obvious that I wouldn't try to brunt
 the cost of any sort of subscription for a site I <span class="nowrap">barely use - well</span>, not anymore, at least.
