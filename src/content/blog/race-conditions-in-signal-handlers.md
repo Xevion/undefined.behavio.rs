@@ -40,8 +40,8 @@ in my language of choice that maintained the speed of `tar`. But looking into th
 specific, designated signals to [emit progress information][checking-tar-progress] for both archival and extraction
 operations.
 
-By starting `tar` with the `--totals` flag, it would emit a statistic when the operation completes. But to request
-information during the operation, a signal must be chosen, like so `tar -x -f archive.tar --totals=SIGUSR1`.
+By starting `tar` with the `--totals` flag, it would emit statistics upon completion. But to request
+information during the operation, a signal must be chosen, like so: `tar -x -f archive.tar --totals=SIGUSR1`.
 
 Emitting a signal can be done with the `kill` command, like so: `kill -USR1 <pid>`. This will send the `USR1` signal
 to the process with the given PID. The `USR1` signal is a user-defined signal, and is not used by the system.
