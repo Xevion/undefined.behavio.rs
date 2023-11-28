@@ -15,9 +15,6 @@ export async function GET(context) {
         description: post.data.description,
         pubDate: post.data.pubDate,
         categories: post.data.tags,
-      // Generate a `url` from each post `slug`
-      // This assumes all blog posts are rendered as `/blog/[slug]` routes
-      // https://docs.astro.build/en/guides/content-collections/#generating-pages-from-content-collections
       link: `/posts/${post.slug}/`,
     })),
   });
