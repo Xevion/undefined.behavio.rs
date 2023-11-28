@@ -1,26 +1,38 @@
+// import { getHighlighter, BUNDLED_LANGUAGES } from "shiki";
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
 import robotsTxt from "astro-robots-txt";
-
+import rehypePrettyCode from "rehype-pretty-code";
 import mdx from "@astrojs/mdx";
+
+/** @type {import('rehype-pretty-code').Options} */
+const prettyOptions = {
+  theme: "github-dark",
+  keepBackground: false,
+  tokensMap: {
+    fn: "entity.name.function",
+  },
+  // getHighlighter: (options) => getHighlighter({
+  //     ...options,
+  //     langs: [
+  //       ...BUNDLED_LANGUAGES,
+  //       {
+  //         id: "proc",
+  //         scopeName: "source.groq",
+  //         path: "../../../../../src/grammars/proc.json",
+  //       },
+  //     ],
+  //   }),
+};
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://undefined.behavio.rs',
+  site: "https://undefined.behavio.rs",
   prefetch: true,
   integrations: [tailwind(), sitemap(), robotsTxt(), mdx()],
   markdown: {
-    shikiConfig: {
-      // Choose from Shiki's built-in themes (or add your own)
-      // https://github.com/shikijs/shiki/blob/main/docs/themes.md
-      theme: 'github-dark',
-      // Add custom languages
-      // Note: Shiki has countless langs built-in, including .astro!
-      // https://github.com/shikijs/shiki/blob/main/docs/languages.md
-      langs: [],
-      // Enable word wrap to prevent horizontal scrolling
-      wrap: true
-    }
-  }
+    syntaxHighlight: false,
+    rehypePlugins: [[rehypePrettyCode, prettyOptions]],
+  },
 });
