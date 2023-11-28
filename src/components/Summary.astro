@@ -29,8 +29,8 @@ const { url, date, title, tags, description } = Astro.props;
     </a>
   </div>
   <div class="mt-3">
-    <h2 class="font-medium inline underline decoration-white/50 mr-1">
-      <a href={url} data-astro-prefetch>{title}</a>
+    <h2 class="font-medium inline mr-1">
+      <a href={url} class="underline decoration-white/60" data-astro-prefetch>{title}</a>
     </h2>
     <i class="space-x-2">
       {
