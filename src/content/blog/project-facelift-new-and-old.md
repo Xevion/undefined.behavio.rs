@@ -48,7 +48,7 @@ Using Vue sped this process up *a lot*, and very quickly I had a working applica
 Additionally, since the project is completely client-side, so you can [practice with it yourself][power-math-pages]!
 
 <video autoplay muted>
-    <source src="/assets/img/power-math-demonstration.mp4" type="video/mp4">
+    <source src="/img/power-math-demonstration.mp4" type="video/mp4">
 </video>
 I'm probably embarrassing myself quite a bit here with how slow I am - I wasn't kidding when I said I made this project so I could get better!
 
@@ -76,5 +76,5 @@ so things read cleaner and aren't out of place, but I'm not perfect working at 1
 
 [photography-portfolio]: https://www.rcw.photos/
 [power-math-pages]: https://xevion.github.io/power-math/
-[power-math-video]: /assets/img/power-math-demonstration.mp4
-[power-math-settings]: /assets/img/power-math-settings.png
+[power-math-video]: /img/power-math-demonstration.mp4
+[power-math-settings]: /img/power-math-settings.png
