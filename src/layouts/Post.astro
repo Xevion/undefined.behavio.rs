@@ -1,12 +1,14 @@
 ---
 import Base from "@layouts/Base.astro";
 import { type CollectionEntry } from 'astro:content';
+import { format } from "date-fns";
 
 interface Props {
   post: CollectionEntry<'blog'>;
 }
 const { post } = Astro.props;
 const { title, pubDate, tags } = post.data;
+const tagCount = tags.length;
 ---
 <Base title={title}>
   <div class="max-w-3xl mx-4">
@@ -15,20 +17,17 @@ const { title, pubDate, tags } = post.data;
         {title}
       </a>
     </h1>
-
-    <p>
-      <i>
+    <p class="mt-0 text-sm ml-5">
         <a href={post.slug}>
-          <time datetime="{{ page.date | date: '%Y-%m-%dT%H:%M:%SZ' }}">
-            {pubDate}
+          <time class="font-mono" datetime="{{ page.date | date: '%Y-%m-%dT%H:%M:%SZ' }}">
+            {format(pubDate, "MM-dd-yyyy HH:mm OOO")}
           </time>
         </a>
         <span class="space-x-2">
-          {tags.map((tag) => (
-            <a href={`/tags/${tag}`}>{ tag }</a>
+          {tags.map((tag, i) => (
+            <><a href={`/tags/${tag}`}>{ tag }</a>{ i < tagCount - 1 ? ',' : ''}</>
         ))}
         </span>
-      </i>
       <article>
         <slot />
       </article>      
