@@ -70,7 +70,6 @@ to be returned to the user properly! Displaying errors could now target specific
 At the same time, rendering these fields properly became rather complex; a macro function needed to be built in order to
 make sure fields were consistent across the site.
 
-{% raw %}
 ```jinja
 {% macro render_field(field, show_label=True) %}
     {% if show_label %}
@@ -87,7 +86,6 @@ make sure fields were consistent across the site.
     <br>
 {% endmacro %}
 ```
-{% endraw %}
 
 This code is a modified version from the WTF-Flask docs.
 
@@ -143,7 +141,7 @@ It seems the logic in including this was that if they included adapters for ever
 would be huge and installing SQLAlchemy would add tons of modules and code that would *never* end up being ran, and worse,
 could become failure points for applications which might only want to work with SQLite databases, like mine in the beginning.
 
-#### spaCy Models
+### Using `spaCy` Models
 
 In the pursuit of making sure my application was safe to keep up indefinitely on Heroku and accessible to anyone, I wanted
 to make it at least a little hard for people to post profanity on it; I wanted to spend as little time on this part of 
@@ -218,11 +216,19 @@ genuine project for my resume. It's hard to say that I learned a bunch of new th
 half the issues I ran into with it. At the very least though, it has restarted my urge to improve my resume and continue
 programming for the first time in months. I ended up putting down 120 commits in less than a week, and I'm still going.
 
-If you'd like, [check out my project][runnerspace-heroku] and [leave a star for it on GitHub][runnerspace-github].
+If you'd like, [check out my project][runnerspace-live] and [leave a star for it on GitHub][runnerspace-github].
 Bye.
 
+## 2023 Update
+
+After Heroku's free tier was abolished, the project was down for a while. Fortunately, a new service perfect for hosting Runnerspace has came about - [Railway][railway]. I highly recommend it, as it's one of the best hobby tier hosts you can find. I am curious how well it will perform in production, but for my use-case, it's been more than brilliant.
+
+I polished up a few of the things in the repository and had it redeployed on Railway in just an hour. So far, it's only gone down once due to a weird load sharing issue occuring on AWS, but it was back up within a couple hours.
+
+The website is live once again, now hosted on a subdomain of my own website, [runnerspace.xevion.dev][runnerspace-live].
+
 [runnerspace-banner]: https://raw.githubusercontent.com/Xevion/runnerspace/master/static/runnerspace-banner-slim.png
-[runnerspace-heroku]: https://runnerspace-utsa.herokuapp.com/
+[runnerspace-live]: https://runnerspace.xevion.dev
 [runnerspace-github]: https://github.com/Xevion/runnerspace/
 [better-profanity-pypi]: https://pypi.org/project/better-profanity/
 [profanity-filter-github]: https://github.com/rominf/profanity-filter/
