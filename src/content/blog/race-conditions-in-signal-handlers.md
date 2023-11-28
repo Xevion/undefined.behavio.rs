@@ -1,8 +1,17 @@
 ---
 title: "Race Conditions in Signal Handlers"
-pubDate: 2023-07-26 16:08:12 -0500
+pubDate: "2023-07-26 16:08:12 -0500"
 description: "Signals offer a unique, low-level way of communicating with processes. But under certain circumstances, they can kill processes, even when they shouldn't."
-tags: ["tar", "signals", "interrupt", "handler", "process", "unix", "race-condition"]
+tags:
+  [
+    "tar",
+    "signals",
+    "interrupt",
+    "handler",
+    "process",
+    "unix",
+    "race-condition",
+  ]
 ---
 
 Signals offer a unique, low-level way of communicating with processes. But under certain circumstances, they can kill
@@ -43,6 +52,11 @@ operations.
 By starting `tar` with the `--totals` flag, it would emit statistics upon completion. But to request
 information during the operation, a signal must be chosen, like so: `tar -x -f archive.tar --totals=SIGUSR1`.
 
+```bash
+$ tar -xf image.tar --totals
+Total bytes read: 43048960 (42MiB, 23MiB/s)
+```
+
 Emitting a signal can be done with the `kill` command, like so: `kill -USR1 <pid>`. This will send the `USR1` signal
 to the process with the given PID. The `USR1` signal is a user-defined signal, and is not used by the system.
 
@@ -50,7 +64,7 @@ And so, my plan was to start a tar process as usual with the `--totals` flag, an
 process occasionally to query an extraction operation's progress. In Python, I used the `subprocess` module to start
 and manage the process.
 
-```python
+```python {8,19}
 import os
 import subprocess
 import signal
@@ -66,13 +80,14 @@ process = subprocess.Popen(command, preexec_fn=os.setsid, stderr=subprocess.PIPE
 
 try:
     while True:
+        # Both of these don't work! Why?
+        # process.send_signal(signal.SIGUSR1)
+        # os.killpg(os.getpgid(process.pid), signal.SIGUSR1)
+
         # Ping the subprocess with SIGUSR1 signal
-        # NOTWORK: process.send_signal(signal.SIGUSR1)
-        # NOTWORK: os.killpg(os.getpgid(process.pid), signal.SIGUSR1)
         subprocess.Popen(["kill", "-SIGUSR1", str(process.pid)])
 
         print(process.stderr.readline().decode("utf-8").strip())
-        # print(process.stdout.readline().decode("utf-8").strip())
 
         # Wait for a specified interval
         time.sleep(1.9)  # Adjust the interval as needed
@@ -115,44 +130,40 @@ and of course: _signal handlers_.
 
 See below, the contents of `/proc/<pid>/status` for a process:
 
+```proc title="/proc/100162/status"
+ 1   │ Name:   Isolated Web Co
+ 2   │ Umask:  0002
+ 3   │ State:  S (sleeping)
+ 4   │ Tgid:   100162
+ 5   │ Ngid:   0
+ 6   │ Pid:    100162
+ 7   │ PPid:   6225
+ 8   │ TracerPid:  0
+ 9   │ Uid:    1000    1000    1000    1000
+10   │ Gid:    1000    1000    1000    1000
+11   │ FDSize: 512
+   
+...
+   
+34   │ THP_enabled:    1
+35   │ Threads:    27
+36   │ SigQ:   0/62382
+37   │ SigPnd: 0000000000000000
+38   │ ShdPnd: 0000000000000000
+39   │ SigBlk: 0000000000000000
+40   │ SigIgn: 0000000001011002
+41   │ SigCgt: 0000000f40800ef8 <--- Focus on this line.
+42   │ CapInh: 0000000000000000
+43   │ CapPrm: 0000000000000000
 ```
-  File: /proc/100162/status
 
-   1   │ Name:   Isolated Web Co
-   2   │ Umask:  0002
-   3   │ State:  S (sleeping)
-   4   │ Tgid:   100162
-   5   │ Ngid:   0
-   6   │ Pid:    100162
-   7   │ PPid:   6225
-   8   │ TracerPid:  0
-   9   │ Uid:    1000    1000    1000    1000
-  10   │ Gid:    1000    1000    1000    1000
-  11   │ FDSize: 512
-  12   │ Groups: 4 27 123 1000 1001
-  13   │ NStgid: 100162
-  14   │ NSpid:  100162
-  ...
-  ...
-  ...
-  33   │ CoreDumping:    0
-  34   │ THP_enabled:    1
-  35   │ Threads:    27
-  36   │ SigQ:   0/62382
-  37   │ SigPnd: 0000000000000000
-  38   │ ShdPnd: 0000000000000000
-  39   │ SigBlk: 0000000000000000
-  40   │ SigIgn: 0000000001011002
-  41   │ SigCgt: 0000000f40800ef8 <--- Focus on this line.
-  42   │ CapInh: 0000000000000000
-  43   │ CapPrm: 0000000000000000
-```
+It's quite a long file (line numbers added for reference), but it contains a lot of useful information about a given process.
 
 We're interested in `SigCgt` (line 41), which is a bitmask of signals that are caught by the process. The specific bit depends on the platform, but in Python, this can be found in the signal module:
 
 ```python
 >>> from signal import SIGUSR1
->>> print(SIGUSR1)
+>>> SIGUSR1
 10
 ```
 
