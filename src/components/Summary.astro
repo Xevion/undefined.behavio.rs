@@ -27,7 +27,7 @@ const { url, date, title, tags, description } = Astro.props;
         </a>
     </div>
     <div class="mt-3">
-        <h2 class="font-medium inline underline mr-1"><a href={url}>{ title }</a></h2>
+        <h2 class="font-medium inline underline decoration-white/50 mr-1"><a href={url}>{ title }</a></h2>
         <i class="space-x-2">
             {tags.map((tag) => (
                 <a href={`/tags/${tag}`}>
