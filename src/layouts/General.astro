@@ -30,7 +30,7 @@ const { title } = Astro.props;
   <div class="max-w-screen-lg">
     <slot name="default" />
   </div>
-  <p class="text-center">
+  <footer class="text-center">
     <a href="/feed.xml">RSS</a>
      |
     <a href={`${repository_url}/commit/${build_revision}`}>
@@ -38,5 +38,5 @@ const { title } = Astro.props;
         >#{build_revision.slice(0, 7)}</span
       >
     </a>
-  </p>
+  </footer>
 </Base>
