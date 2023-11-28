@@ -1,0 +1,13 @@
+---
+interface Props {
+    className?: string | null;
+}
+const { className } = Astro.props;
+---
+<header class:list={["text-5xl text-center lowercase", className]}>
+    <div class="stack" style="--stacks: 3;">
+        <span style="--index: 0;">undefined behaviors</span>
+        <span style="--index: 1;">undefined behaviors</span>
+        <span style="--index: 2;">undefined behaviors</span>
+    </div>
+</header>
