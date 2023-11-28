@@ -7,12 +7,13 @@ import rehypePrettyCode from "rehype-pretty-code";
 import mdx from "@astrojs/mdx";
 
 /** @type {import('rehype-pretty-code').Options} */
+import react from "@astrojs/react";
 const prettyOptions = {
   theme: "github-dark",
   keepBackground: false,
   tokensMap: {
-    fn: "entity.name.function",
-  },
+    fn: "entity.name.function"
+  }
   // getHighlighter: (options) => getHighlighter({
   //     ...options,
   //     langs: [
@@ -26,13 +27,14 @@ const prettyOptions = {
   //   }),
 };
 
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://undefined.behavio.rs",
   prefetch: true,
-  integrations: [tailwind(), sitemap(), robotsTxt(), mdx()],
+  integrations: [tailwind(), sitemap(), robotsTxt(), mdx(), react()],
   markdown: {
     syntaxHighlight: false,
-    rehypePlugins: [[rehypePrettyCode, prettyOptions]],
-  },
+    rehypePlugins: [[rehypePrettyCode, prettyOptions]]
+  }
 });
