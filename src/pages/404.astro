@@ -1,0 +1,15 @@
+---
+import Base from "@layouts/Base.astro";
+import Header from "@components/Header.astro";
+---
+
+<Base>
+  <div class="h-screen flex items-center">
+    <div class="flex flex-col items-center">
+      <Header className="!text-7xl" text="404" />
+      <a href="/" data-astro-prefetch="viewport">
+        <span class="font-mono text-center">cd ~</span>
+      </a>
+    </div>
+  </div>
+</Base>
