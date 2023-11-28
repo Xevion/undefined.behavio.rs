@@ -130,7 +130,7 @@ and of course: _signal handlers_.
 
 See below, the contents of `/proc/<pid>/status` for a process:
 
-```proc title="/proc/100162/status"
+```proc title="/proc/100162/status" {22}
  1   │ Name:   Isolated Web Co
  2   │ Umask:  0002
  3   │ State:  S (sleeping)
@@ -152,7 +152,7 @@ See below, the contents of `/proc/<pid>/status` for a process:
 38   │ ShdPnd: 0000000000000000
 39   │ SigBlk: 0000000000000000
 40   │ SigIgn: 0000000001011002
-41   │ SigCgt: 0000000f40800ef8 <--- Focus on this line.
+41   │ SigCgt: 0000000f40800ef8
 42   │ CapInh: 0000000000000000
 43   │ CapPrm: 0000000000000000
 ```
