@@ -159,7 +159,7 @@ See below, the contents of `/proc/<pid>/status` for a process:
 
 It's quite a long file (line numbers added for reference), but it contains a lot of useful information about a given process.
 
-We're interested in `SigCgt` (line 41), which is a bitmask of signals that are caught by the process. The specific bit depends on the platform, but in Python, this can be found in the signal module:
+We're interested in `SigCgt`, which is a bitmask of signals that are caught by the process. The specific bit depends on the platform, but in Python, this can be found in the signal module:
 
 ```python
 >>> from signal import SIGUSR1

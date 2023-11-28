@@ -7,7 +7,6 @@ type TimeProps = {
 }
 
 const Time: FunctionComponent<TimeProps> = ({ time }) => {
-    console.log({ asGiven: time});
   return (
     <time className="font-mono">{format(time, "MM-dd-yyyy HH:mm OOOO")}</time>
   );
