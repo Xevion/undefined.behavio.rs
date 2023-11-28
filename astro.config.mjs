@@ -1,10 +1,14 @@
 import { defineConfig } from "astro/config";
-
 import tailwind from "@astrojs/tailwind";
+import sitemap from "@astrojs/sitemap";
+
+import robotsTxt from "astro-robots-txt";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind()],
+  site: 'https://undefined.behavio.rs',
+  integrations: [tailwind(), sitemap(), robotsTxt({
+  })],
   markdown: {
     shikiConfig: {
       // Choose from Shiki's built-in themes (or add your own)
@@ -15,7 +19,7 @@ export default defineConfig({
       // https://github.com/shikijs/shiki/blob/main/docs/languages.md
       langs: [],
       // Enable word wrap to prevent horizontal scrolling
-      wrap: true,
-    },
-  },
+      wrap: true
+    }
+  }
 });
