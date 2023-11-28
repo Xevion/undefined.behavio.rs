@@ -8,7 +8,7 @@ const blogCollection = defineCollection({
     description: z.string(),
     pubDate: z.string().transform((date) => 
       z.date().parse(
-        parse(date, 'yyyy-MM-dd HH:mm:ss XXXX', new Date())
+        parse(date, 'yyyy-MM-dd HH:mm:ss XX', new Date())
       )
     ),
     tags: z.array(z.string()),
