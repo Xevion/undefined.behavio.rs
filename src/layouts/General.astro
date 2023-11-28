@@ -1,0 +1,42 @@
+---
+import Base from "@layouts/Base.astro";
+import Header from "@components/Header.astro";
+
+const repository_url = `https://github.com/${
+  import.meta.env.PUBLIC_VERCEL_GIT_REPO_OWNER
+}/${import.meta.env.PUBLIC_VERCEL_GIT_REPO_SLUG}`;
+const build_revision = import.meta.env.PUBLIC_VERCEL_GIT_COMMIT_SHA;
+
+interface Props {
+  title?: string;
+}
+
+const { title } = Astro.props;
+---
+
+<Base title={title}>
+  <Header className="mt-5 mb-3" />
+  <nav
+    class="text-center text-xl text-[#808080] [&>a]:text-white [&>a]:underline decoration-white/85 [&>span]:select-none"
+  >
+    <a href="/">~/</a>
+    <span>:</span>
+    <a href="https://xevion.dev">~/about/</a>
+    <span>:</span>
+    <a href="https://xevion.dev/projects">~/projects/</a>
+    <span>:</span>
+    <a href="https://xevion.dev/resume">~/resume/</a>
+  </nav>
+  <div class="max-w-screen-lg">
+    <slot name="default" />
+  </div>
+  <p class="text-center">
+    <a href="/feed.xml">RSS</a>
+     |
+    <a href={`${repository_url}/commit/${build_revision}`}>
+      <span id="commit-id" style={{ color: "#" + build_revision.slice(0, 6) }}
+        >#{build_revision.slice(0, 7)}</span
+      >
+    </a>
+  </p>
+</Base>

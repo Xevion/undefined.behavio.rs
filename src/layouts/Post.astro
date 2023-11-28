@@ -1,5 +1,5 @@
 ---
-import Base from "@layouts/Base.astro";
+import General from "@layouts/General.astro";
 import { type CollectionEntry } from 'astro:content';
 import { format } from "date-fns";
 
@@ -10,7 +10,7 @@ const { post } = Astro.props;
 const { title, pubDate, tags } = post.data;
 const tagCount = tags.length;
 ---
-<Base title={title}>
+<General title={title}>
   <div class="max-w-3xl mx-4">
     <h1>
       <a href={post.slug}>
@@ -34,4 +34,4 @@ const tagCount = tags.length;
     </p>
   </div>
   <hr />
-</Base>
+</General>

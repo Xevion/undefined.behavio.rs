@@ -1,60 +1,39 @@
 ---
-import '@styles/global.scss';
-import '@styles/fonts.scss';
-import Header from '@components/Header.astro';
-import { ViewTransitions } from 'astro:transitions';
-
-const repository_url = `https://github.com/${import.meta.env.PUBLIC_VERCEL_GIT_REPO_OWNER}/${import.meta.env.PUBLIC_VERCEL_GIT_REPO_SLUG}`
-const build_revision = import.meta.env.PUBLIC_VERCEL_GIT_COMMIT_SHA;
+import "@styles/global.scss";
+import "@styles/fonts.scss";
+import { ViewTransitions } from "astro:transitions";
 
 interface Props {
-	title?: string;
+  title?: string;
+  build_revision?: string;
 }
 
-const { title } = Astro.props;
-const titleTag = title != undefined ? `${title} | undefined.behavio.rs` : 'undefined.behavio.rs';
+const { title: titleProp, build_revision } = Astro.props;
+const title =
+  titleProp != undefined
+    ? `${titleProp} | undefined.behavio.rs`
+    : "undefined.behavio.rs";
 ---
+
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta content="width=device-width" name="viewport">
-        <meta name="build-commit-id" content={build_revision} />
-        <title>
-      		{titleTag}
-        </title>
-        <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
-        <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
-        <link as="font" crossorigin href="/fonts/-cmunrm.woff2" rel="preload">
-        <link as="font" crossorigin href="/fonts/-cmuntt.woff2" rel="preload">
-        <link as="font" crossorigin href="/fonts/-cmunti.woff2" rel="preload">
-        <link as="sitemap" type="application/xml" href="/sitemap-index.xml">
-        <link href="/feed.xml" rel="alternate" type="application/xml">
-        <ViewTransitions />
-    </head>
-    <body class="flex-col align-middle w-full max-w-full">
-        <Header className="mt-5 mb-3" />
-        <nav class="text-center text-xl text-[#808080] [&>a]:text-white [&>a]:underline decoration-white/85 [&>span]:select-none">
-            <a href="/">~/</a>
-            <span>:</span>
-            <a href="https://xevion.dev">~/about/</a>
-            <span>:</span>
-            <a href="https://xevion.dev/projects">~/projects/</a>
-            <span>:</span>
-            <a href="https://xevion.dev/resume">~/resume/</a>
-        </nav>
-        <div class="max-w-screen-lg">
-            <slot name="default" />
-        </div>
-        <p class="text-center">
-            <a href="/feed.xml">RSS</a>
-            |
-            <a href={`${repository_url}/commit/${build_revision}`}>
-              <span id="commit-id" style={{color: '#' + build_revision.slice(0, 6)}}>#{build_revision.slice(0, 7)}</span>
-            </a>
-        </p>
-    </body>
-    <!-- <script type="text/javascript"> 
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width" name="viewport" />
+    <meta name="build-commit-id" content={build_revision} />
+    <title>{title}</title>
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
+    <link as="font" crossorigin href="/fonts/-cmunrm.woff2" rel="preload" />
+    <link as="font" crossorigin href="/fonts/-cmuntt.woff2" rel="preload" />
+    <link as="font" crossorigin href="/fonts/-cmunti.woff2" rel="preload" />
+    <link as="sitemap" type="application/xml" href="/sitemap-index.xml" />
+    <link rel="alternate" type="application/xml" href="/feed.xml" />
+    <ViewTransitions />
+  </head>
+  <body class="flex-col align-middle w-full max-w-full">
+    <slot />
+  </body><!-- <script type="text/javascript"> 
         Is all of this too much effort to make the animation play in just the right way?
         window.onbeforeunload = function() {
             Remember the origin so it can be checked for page reloads
@@ -72,5 +51,4 @@ const titleTag = title != undefined ? `${title} | undefined.behavio.rs` : 'undef
         }
      </script>
     -->
-
 </html>
