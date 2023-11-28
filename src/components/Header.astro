@@ -1,13 +1,16 @@
 ---
 interface Props {
     className?: string | null;
+    children?: string | null;
 }
-const { className } = Astro.props;
+const { className, children: propText } = Astro.props;
+console.log(Astro.props);
+const text = propText ?? "undefined behaviors";
 ---
 <header class:list={["text-5xl text-center lowercase", className]}>
     <div class="stack" style="--stacks: 3;">
-        <span style="--index: 0;">undefined behaviors</span>
-        <span style="--index: 1;">undefined behaviors</span>
-        <span style="--index: 2;">undefined behaviors</span>
+        <span style="--index: 0;">{text}</span>
+        <span style="--index: 1;">{text}</span>
+        <span style="--index: 2;">{text}</span>
     </div>
 </header>
