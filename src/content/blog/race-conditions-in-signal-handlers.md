@@ -64,7 +64,7 @@ And so, my plan was to start a tar process as usual with the `--totals` flag, an
 process occasionally to query an extraction operation's progress. In Python, I used the `subprocess` module to start
 and manage the process.
 
-```python {8,19}
+```python {8,21}
 import os
 import subprocess
 import signal
