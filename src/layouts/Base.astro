@@ -31,23 +31,6 @@ const titleTag = title != undefined ? `${title} | undefined.behavio.rs` : 'undef
         <link as="sitemap" type="application/xml" href="/sitemap-index.xml">
         <link href="/feed.xml" rel="alternate" type="application/xml">
         <ViewTransitions />
-        <!-- {page._preview_description and page.title or page.name == "index.html"} -->
-        <!--     <meta content="website" property="og:type"> -->
-        <!--     <meta property="og:url" content="{{ page.url | absolute_url }}"> -->
-        <!--     <meta property="og:title" content="{{ page.title | default: "Xevion.dev" }}"> -->
-        <!--     <meta name="twitter:title" content="{{ page.title | default: "Xevion.dev" }}"> -->
-        <!--     {% if page._preview_description -%} -->
-        <!--         <meta property="og:description" content="{{ page._preview_description }}"> -->
-        <!--         <meta property="twitter:description" content="{{ page._preview_description }}"> -->
-        <!--     {% endif -%} -->
-        <!--     {%- if page._preview_image -%} -->
-        <!--         <meta property="og:image" content="{{ page._preview_image | absolute_url }}"> -->
-        <!--         <meta name="twitter:image" content="{{ page._preview_image | absolute_url }}"> -->
-        <!--         <meta content="summary_large_image" name="twitter:card"> -->
-        <!--     {%- else -%} -->
-        <!--         <meta content="summary" name="twitter:card"> -->
-        <!--     {%- endif -%} -->
-        <!-- {%- endif %} -->
     </head>
     <body class="flex-col align-middle w-full max-w-full">
         <Header className="mt-5 mb-3" />

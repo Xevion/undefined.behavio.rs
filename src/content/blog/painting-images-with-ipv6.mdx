@@ -4,6 +4,8 @@ pubDate: 2023-04-14 13:07:43 -0500
 tags: ["ipv6", "python", "asyncio", "websocket", "PIL"]
 description: "Have you ever painted images with IPv6? I found out how in 30 minutes."
 ---
+import { Code } from 'astro:components';
+
 
 Despite how it sounds, this is not a joke. Well, maybe it is, but it's a fantastic demonstration of IPv6 addressing,
 and you can join in on the fun right now too!
@@ -44,8 +46,7 @@ On top of this, the values are encoded in hexadecimal, so you can use the full r
 worry.
 
 As an example, painting the color `#008080` (teal) at the position `45, 445` would
-be encoded as
-`2a06:a003:a040:102d:01bd:00:80:80`. To help you pick out the X and Y
+be encoded as `2a06:a003:a040:102d:01bd:00:80:80`. To help you pick out the X and Y
 coordinates, `0x2D` in hexadecimal,
 and `445`
 is `0x1BD`. The color is simply placing in the last 6 bytes of the address, no
