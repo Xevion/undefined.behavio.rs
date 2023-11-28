@@ -125,8 +125,12 @@ hr {
   color: white;
 }
 
-article a {
-  color: #90bcff;
+// Link colors within articles generally, or direct children of span
+article,
+span > {
+  a {
+    color: #90bcff;
+  }
 }
 
 hr {
