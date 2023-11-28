@@ -1,7 +1,8 @@
+div[data-rehype-pretty-code-fragment],
 pre,
 code {
   font-family: "CMU Typewriter Text", monospace;
-  font-size: 0.8em;
+  font-size: 0.9em;
 }
 
 // Inline code styling
@@ -14,10 +15,10 @@ h4,
 h5,
 h6 {
   > code {
-    background-color: black;
+    background-color: rgba(18, 18, 18);
     padding: 0.1rem 0.27rem;
     border-radius: 3px;
-    border: 1px solid rgba(white, 0.5);
+    border: 1px solid rgba(white, 0.4);
     white-space: nowrap;
   }
 }
@@ -27,11 +28,30 @@ a > code {
   color: #90bcff;
 }
 
+div[data-rehype-pretty-code-fragment] {
+  div[data-rehype-pretty-code-title] {
+    text-align: center;
+  }
+
+  // Horizontal padding is applied on a line level to ensure highlighting is not affected.
+  padding: 1em 0;
+  background-color: #161616 !important;
+  > pre {
+    > code {
+      > span[data-line] {
+        padding: 0 1em;
+        &[data-highlighted-line] {
+          background: rgba(255, 255, 255, 0.1);
+        }
+      }
+    }
+  }
+}
+
 pre {
-  background: rgb(25, 25, 25);
+  // background: rgb(25, 25, 25);
   border-radius: 5px;
-  padding: 1em;
-  
+
   &.astro-code {
     background-color: #191919 !important;
   }
