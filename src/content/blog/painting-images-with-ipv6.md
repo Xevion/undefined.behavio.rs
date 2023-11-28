@@ -18,13 +18,12 @@ place a single
 pixel on a canvas every 5 minutes.
 
 The difference between [/r/place][place-reddit] and [Place: IPv6][place-v6] is that the latter uses a human-accessible
-user interface for
-selecting colors and placing pixels, while the other uses IPv6 addresses.
+user interface for selecting colors and placing pixels (communicating over HTTP websockets, traditionally), while the other uses IPv6 addresses.
 
 Hold on - you might be thinking, _"Don't you mean a REST API? Or at least an HTTP webserver? Or even a TCP/UDP
 socket?"_.
 
-None of that, it's not just a normal server accessible by IPv6 exclusively - it's an IPv6 address range booked
+None of that; it's **not** just a normal server accessible over IPv6 exclusively - it's an IPv6 address range booked
 specifically for the purpose of receiving R, G, B, X and Y arguments.
 
 ## How does it work?
@@ -35,7 +34,7 @@ The arguments are encoded into the IPv6 address, and the service will receive an
 
 > **Note**: The service has since been updated to use a different IPv6 address range, but the concept is the same.
 
-Originally, the IPv6 address was {% ihighlight digdag %}2a06:a003:d040:SXXX:YYY:RR:GG:BB{% endihighlight %} where `XXX`
+Originally, the IPv6 address was `2a06:a003:d040:SXXX:YYY:RR:GG:BB` where `XXX`
 and `YYY` are the X and Y coordinates, and `RR`, `GG` and `BB` are the R, G and B values of the pixel. By substituting
 you arguments into these positions, you can paint a pixel on the canvas. Lastly, the `S` represents the size of the
 pixel.
@@ -44,12 +43,12 @@ Only `1` or `2` is accepted, representing a 1x1 or 2x2 pixel.
 On top of this, the values are encoded in hexadecimal, so you can use the full range of 0-255 for each color without
 worry.
 
-As an example, painting the color {% ihighlight dart %}#008080{% endihighlight %} (teal) at the position `45, 445` would
+As an example, painting the color `#008080` (teal) at the position `45, 445` would
 be encoded as
-{% ihighlight digdag %}2a06:a003:a040:102d:01bd:00:80:80{% endihighlight %}. To help you pick out the X and Y
-coordinates, {% ihighlight java %}45{% endihighlight %} is {% ihighlight java %}0x2D{% endihighlight %} in hexadecimal,
-and {% ihighlight java %}445{% endihighlight %}
-is {% ihighlight java %}0x1BD{% endihighlight %}. The color is simply placing in the last 6 bytes of the address, no
+`2a06:a003:a040:102d:01bd:00:80:80`. To help you pick out the X and Y
+coordinates, `0x2D` in hexadecimal,
+and `445`
+is `0x1BD`. The color is simply placing in the last 6 bytes of the address, no
 hexadecimal conversion needed.
 
 By now, the basic concept should be clear. You can paint a pixel by sending a `ping` to a specific IPv6 address with the
