@@ -1,14 +1,13 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
-
 import robotsTxt from "astro-robots-txt";
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://undefined.behavio.rs',
-  integrations: [tailwind(), sitemap(), robotsTxt({
-  })],
+  prefetch: true,
+  integrations: [tailwind(), sitemap(), robotsTxt()],
   markdown: {
     shikiConfig: {
       // Choose from Shiki's built-in themes (or add your own)

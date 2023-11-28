@@ -1,40 +1,46 @@
 ---
 interface Props {
-    url: string;
-    date: Date;
-    title: string;
-    tags: string[];
-    description: string;
+  url: string;
+  date: Date;
+  title: string;
+  tags: string[];
+  description: string;
 }
 
 const { url, date, title, tags, description } = Astro.props;
 ---
+
 <div class="clear-both">
-    <div class="text-center uppercase mb-4 ml-8 py-1 border-y border-white leading-4 float-right">
-        <a href={url}>
-            <time datetime={date.toISOString()}>
-                <span>
-                    { date.toLocaleDateString("en-US", {month: "short"}) }
-                </span>
-                <br>
-                <span class="text-[2em] leading-7">
-                    { date.getDate().toString().padStart(2, "0") }
-                </span>
-                <br>
-                <span>
-                    { date.getFullYear() }</span>
-            </time>
-        </a>
-    </div>
-    <div class="mt-3">
-        <h2 class="font-medium inline underline decoration-white/50 mr-1"><a href={url}>{ title }</a></h2>
-        <i class="space-x-2">
-            {tags.map((tag) => (
-                <a href={`/tags/${tag}`}>
-                    { tag }
-                </a>
-            ))}
-        </i>
-    </div>
-{ description }
+  <div
+    class="text-center uppercase mb-4 ml-8 py-1 border-y border-white leading-4 float-right"
+  >
+    <a href={url} data-astro-prefetch>
+      <time datetime={date.toISOString()}>
+        <span>
+          {date.toLocaleDateString("en-US", { month: "short" })}
+        </span>
+        <br />
+        <span class="text-[2em] leading-7">
+          {date.getDate().toString().padStart(2, "0")}
+        </span>
+        <br />
+        <span> {date.getFullYear()}</span>
+      </time>
+    </a>
+  </div>
+  <div class="mt-3">
+    <h2 class="font-medium inline underline decoration-white/50 mr-1">
+      <a href={url} data-astro-prefetch>{title}</a>
+    </h2>
+    <i class="space-x-2">
+      {
+        tags.map((tag) => (
+          <a data-astro-prefetch href={`/tags/${tag}`}>
+            {tag}
+          </a>
+        ))
+      }
+    </i>
+  </div>
+  {description}
 </div>
