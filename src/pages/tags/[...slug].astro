@@ -1,15 +1,21 @@
 ---
-import General from '@layouts/General.astro';
-import { getCollection } from 'astro:content';
+import General from "@layouts/General.astro";
+import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
-  const blogEntries = await getCollection('blog');
-  const tags = new Set(blogEntries.filter(entry => !entry.data.draft).map(entry => entry.data.tags).flat());
-  return Array.from(tags, (tag) => ({ params: {slug: tag}, props: {tag}}));
+  const blogEntries = await getCollection("blog");
+  const tags = new Set(
+    blogEntries
+      .filter((entry) => import.meta.env.DEV || !entry.data.draft)
+      .map((entry) => entry.data.tags)
+      .flat(),
+  );
+  return Array.from(tags, (tag) => ({ params: { slug: tag }, props: { tag } }));
 }
 
 const { tag } = Astro.props;
 ---
+
 <General title={`${tag} posts`}>
-  { tag }
+  {tag}
 </General>
