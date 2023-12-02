@@ -4,7 +4,7 @@ import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('blog');
-  const tags = new Set(blogEntries.map(entry => entry.data.tags).flat());
+  const tags = new Set(blogEntries.filter(entry => !entry.data.draft).map(entry => entry.data.tags).flat());
   return Array.from(tags, (tag) => ({ params: {slug: tag}, props: {tag}}));
 }
 

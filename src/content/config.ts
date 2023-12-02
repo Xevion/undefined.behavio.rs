@@ -7,6 +7,7 @@ const blogCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
+    draft: z.boolean().default(false),
     pubDate: z.string().transform((date) => {
       // I am truly lost on how TZ works in Javascript Dates.
       // I believe somehow the solution would lie here in making sure that the date offset is parsed and transmitted properly,
