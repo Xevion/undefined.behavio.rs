@@ -1,12 +1,13 @@
 ---
 import General from "@layouts/General.astro";
+import { shouldShowPost } from "@lib/helpers";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection("blog");
   const tags = new Set(
     blogEntries
-      .filter((entry) => import.meta.env.DEV || !entry.data.draft)
+      .filter(shouldShowPost)
       .map((entry) => entry.data.tags)
       .flat(),
   );

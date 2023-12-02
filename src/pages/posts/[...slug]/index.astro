@@ -1,11 +1,12 @@
 ---
 import Post from "@layouts/Post.astro";
+import { shouldShowPost } from "@lib/helpers";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
   return posts
-    .filter((entry) => import.meta.env.DEV || !entry.data.draft)
+    .filter(shouldShowPost)
     .map((entry) => {
       return {
         params: { slug: entry.slug },
