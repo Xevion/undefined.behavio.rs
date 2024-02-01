@@ -8,6 +8,7 @@ code {
 // Inline code styling
 p,
 a,
+span,
 ul > li,
 ol > li,
 h1,
@@ -24,6 +25,13 @@ h6 {
     white-space: nowrap;
   }
 }
+
+[data-highlighted-chars] {
+  &[data-chars-id='purple'] {
+    @apply bg-purple-800/40 rounded-sm shadow-purple-800/50 shadow-inner;
+  }
+}
+
 
 // Inline code link styling
 a > code {
