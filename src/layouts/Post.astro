@@ -2,15 +2,83 @@
 import General from "@layouts/General.astro";
 import Time from "@components/Time.tsx";
 import { type CollectionEntry } from "astro:content";
+import type { Props as SEOProps } from "astro-seo";
+
 interface Props {
   post: CollectionEntry<"blog">;
 }
+
 const { post } = Astro.props;
 const { title, pubDate, tags } = post.data;
 const tagCount = tags.length;
+const ogp: SEOProps = {
+  title,
+  description: post.data.description,
+  canonical: `${Astro.site}posts/${post.slug}`,
+  openGraph: {
+    optional: {
+      siteName: "undefined behaviors",
+
+      locale: "en_US",
+    },
+    basic: {
+      title,
+      type: "article",
+      image: post.data.preview_image ?? "/img/default.png",
+    },
+    article: {
+      tags,
+      section: "Article",
+    },
+  },
+  twitter: {
+    site: "@xevioni",
+    creator: "@xevioni",
+    description: post.data.description,
+    card: "summary_large_image",
+    image: post.data.preview_image ?? "/img/default.png",
+    title: title,
+
+  },
+  extend: {
+    meta: [
+      { content: "Written by", name: "twitter:label1" },
+      { content: "Ryan Walters", name: "twitter:data1" },
+    ],
+  },
+};
+
+/**
+ * 
+ * title={title}
+    description="A heavily optimized description full of well-researched keywords."
+    openGraph={{
+      basic: {
+        title: "A Very Descriptive Title",
+        type: "A type.",
+        image: "https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png",
+      }
+    }}
+    twitter={{
+      creator: "@xevioni"
+    }}
+    extend={{
+      // extending the default link tags
+      link: [{ rel: "icon", href: "/favicon.ico" }],
+      // extending the default meta tags
+      meta: [
+        {
+          name: "twitter:image",
+          content: "https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png",
+        },
+        { name: "twitter:title", content: "Tinker Tailor Soldier Spy" },
+        { name: "twitter:description", content: "Agent" },
+      ],
+    }}
+ */
 ---
 
-<General title={title}>
+<General title={title} ogp={ogp}>
   <div class="max-w-3xl mx-4">
     <h1>
       <a href={post.slug}>

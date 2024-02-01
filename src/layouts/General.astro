@@ -1,6 +1,7 @@
 ---
 import Base from "@layouts/Base.astro";
 import Header from "@components/Header.astro";
+import type { Props as SEOProps } from "astro-seo";
 
 const repository_url = `https://github.com/${
   import.meta.env.PUBLIC_VERCEL_GIT_REPO_OWNER
@@ -9,12 +10,13 @@ const build_revision = import.meta.env.PUBLIC_VERCEL_GIT_COMMIT_SHA;
 
 interface Props {
   title?: string;
+  ogp?: SEOProps
 }
 
-const { title } = Astro.props;
+const { title, ogp } = Astro.props;
 ---
 
-<Base title={title}>
+<Base title={title} ogp={ogp}>
   <Header className="mt-5 mb-3" />
   <nav
     class="text-center text-xl text-[#808080] [&>a]:text-white [&>a]:underline decoration-white/85 [&>span]:select-none"

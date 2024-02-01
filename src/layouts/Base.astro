@@ -2,10 +2,13 @@
 import "@styles/global.scss";
 import "@styles/fonts.scss";
 import { ViewTransitions } from "astro:transitions";
+import { SEO, type Props as SEOProps } from "astro-seo";
+import OpenGraphArticleTags from "node_modules/astro-seo/src/components/OpenGraphArticleTags.astro";
 
 interface Props {
   title?: string;
   build_revision?: string;
+  ogp?: SEOProps;
 }
 
 const { title: titleProp, build_revision } = Astro.props;
@@ -13,6 +16,77 @@ const title =
   titleProp != undefined
     ? `${titleProp} | undefined.behavio.rs`
     : "undefined.behavio.rs";
+const linkedData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://undefined.behavio.rs/#website",
+      url: "https://undefined.behavio.rs",
+      name: "undefined behaviors",
+      publisher: { "@id": "https://undefined.behavio.rs/#organization" },
+      inLanguage: "en-US"
+    },
+    // {
+    //   "@type": "ImageObject",
+    //   "@id": "https://undefined.behavio.rs/wp-content/uploads/2020/07/calendar-month-view-previous-past-months-1024x682.png",
+    //   url: "https://undefined.behavio.rs/wp-content/uploads/2020/07/calendar-month-view-previous-past-months-1024x682.png",
+    //   width: "200",
+    //   height: "200",
+    //   inLanguage: "en-US"
+    // },
+    {
+      "@type": "WebPage",
+      "@id": Astro.props.ogp?.canonical,
+      url: Astro.props.ogp?.canonical,
+      name: {title},
+      // datePublished: "2020-07-21T07:47:00-07:00",
+      // dateModified: "2020-09-07T10:59:21-07:00",
+      isPartOf: { "@id": "https://undefined.behavio.rs/#website" },
+      // primaryImageOfPage: {
+      //   "@id": "https://undefined.behavio.rs/wp-content/uploads/2020/07/calendar-month-view-previous-past-months-1024x682.png"
+      // },
+      inLanguage: "en-US"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://xevion.dev",
+      name: "Ryan Walters",
+      url: "https://xevion.dev",
+      image: {
+        "@type": "ImageObject",
+        // "@id": "https://secure.gravatar.com/avatar/13d11a314fe4096840a13b4ae4eb1796?s=96&amp;d=retro&amp;r=pg",
+        // url: "https://secure.gravatar.com/avatar/13d11a314fe4096840a13b4ae4eb1796?s=96&amp;d=retro&amp;r=pg",
+        caption: "Ryan Walters",
+        inLanguage: "en-US"
+      },
+      worksFor: { "@id": "https://undefined.behavio.rs/#organization" }
+    },
+    {
+      "@type": "BlogPosting",
+      headline: title,
+      datePublished: "2020-07-21T07:47:00-07:00",
+      dateModified: "2020-09-07T10:59:21-07:00",
+      author: { "@id": "https://xevion.dev" },
+      // publisher: { "@id": "https://undefined.behavio.rs/#organization" },
+      description: Astro.props.ogp?.description,
+      name: title,
+      // "@id": "https://undefined.behavio.rs/how-to-make-a-monthly-calendar-with-real-data/#richSnippet",
+      isPartOf: {
+        // "@id": "https://undefined.behavio.rs/how-to-make-a-monthly-calendar-with-real-data/#webpage"
+      },
+      image: {
+        // "@id": "https://undefined.behavio.rs/wp-content/uploads/2020/07/calendar-month-view-previous-past-months-1024x682.png"
+      },
+      inLanguage: "en-US",
+      mainEntityOfPage: {
+        // "@id": "https://undefined.behavio.rs/how-to-make-a-monthly-calendar-with-real-data/#webpage"
+      }
+    }
+  ]
+}
+
+const linkedDataTag = "<script type='application/ld+json'>" + JSON.stringify(linkedData) + "</script>"
 ---
 
 <!doctype html>
@@ -22,6 +96,8 @@ const title =
     <meta content="width=device-width" name="viewport" />
     <meta name="build-commit-id" content={build_revision} />
     <title>{title}</title>
+    <SEO {...Astro.props.ogp} />
+    <Fragment set:html={linkedDataTag} />
     <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
     <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
     <link as="font" crossorigin href="/fonts/-cmunrm.woff2" rel="preload" />
