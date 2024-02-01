@@ -109,11 +109,11 @@ Make sure to not copy the last portion, `H.&..>.{...Q..z3`, as it's the ASCII re
 
 This next step is super easy, all we have to do is find the file that holds the pairing keys for your Bluetooth devices.
 
-The specific file we're looking for is `/var/lib/bluetooth/$PC_MAC/$DEVICE_MAC/info`, where `$PC_MAC` is your computer's MAC address and `$DEVICE_MAC` is the device's MAC address.
+The specific file we're looking for is `/var/lib/bluetooth/$PC_MAC/$DEVICE_MAC/info`, where `$PC_MAC{:.meta.diff.range}` is your computer's MAC address and `$DEVICE_MAC{:.meta.diff.range}` is the device's MAC address.
 
 That said, the form of the MAC address is different between Windows and Linux. For example,
-- My `$PC_MAC` on Linux is `BC:C7:46:9B:D0:1E`, but on Windows it's `bcc7469bd01e`.
-- My `$DEVICE_MAC` on Linux is `AC:BF:71:66:FE:B2`, but on Windows it's `acbf7166feb2`.
+- My `$PC_MAC{:.meta.diff.range}` on Linux is `BC:C7:46:9B:D0:1E`, but on Windows it's `bcc7469bd01e`.
+- My `$DEVICE_MAC{:.meta.diff.range}` on Linux is `AC:BF:71:66:FE:B2`, but on Windows it's `acbf7166feb2`.
 - Technically, this is just a formatting difference, but it's important to note.
 
 Since `/var/lib/bluetooth/` is entirely owned by root, you'll need to use `sudo` to edit the file. I used `micro` to edit the file, but you can use `nano` or `vim` if you prefer.
