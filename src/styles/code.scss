@@ -40,16 +40,22 @@ a > code {
 
 div[data-rehype-pretty-code-fragment] {
   div[data-rehype-pretty-code-title] {
+    @apply bg-zinc-400/10 drop-shadow-md;
+    padding-top: 0.25em;
     text-align: center;
   }
 
-  // Horizontal padding is applied on a line level to ensure highlighting is not affected.
-  padding: 1em 0;
+  
   background-color: #161616 !important;
   > pre {
     > code {
+      padding: 0.5em 0;
+      
       > span[data-line] {
+        // Horizontal padding is applied on a line level to ensure highlighting is not affected.
         padding: 0 1em;
+
+        // Line level highlighting
         &[data-highlighted-line] {
           background: rgba(255, 255, 255, 0.1);
         }
