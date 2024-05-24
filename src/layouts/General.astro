@@ -6,7 +6,7 @@ import type { Props as SEOProps } from "astro-seo";
 const repository_url = `https://github.com/${
   import.meta.env.PUBLIC_VERCEL_GIT_REPO_OWNER
 }/${import.meta.env.PUBLIC_VERCEL_GIT_REPO_SLUG}`;
-const build_revision = import.meta.env.PUBLIC_VERCEL_GIT_COMMIT_SHA ?? "unknown";
+const build_revision = import.meta.env.PUBLIC_VERCEL_GIT_COMMIT_SHA;
 
 interface Props {
   title?: string;

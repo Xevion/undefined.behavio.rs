@@ -8,6 +8,8 @@ import mdx from "@astrojs/mdx";
 
 /** @type {import('rehype-pretty-code').Options} */
 import react from "@astrojs/react";
+import env from "astro-env";
+
 const prettyOptions = {
   theme: "github-dark",
   keepBackground: false,
@@ -32,7 +34,13 @@ const prettyOptions = {
 export default defineConfig({
   site: "https://undefined.behavio.rs",
   prefetch: true,
-  integrations: [tailwind(), sitemap(), robotsTxt(), mdx(), react()],
+  integrations: [tailwind(), sitemap(), robotsTxt(), mdx(), react(), env({
+    schema: z.object({
+      PUBLIC_VERCEL_GIT_REPO_OWNER: z.string(),
+      PUBLIC_VERCEL_GIT_REPO_SLUG: z.string(),
+      PUBLIC_VERCEL_GIT_COMMIT_SHA: z.string(),
+    }),
+  })],
   markdown: {
     syntaxHighlight: false,
     rehypePlugins: [[rehypePrettyCode, prettyOptions]]
