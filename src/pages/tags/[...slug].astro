@@ -1,7 +1,8 @@
 ---
+import Summary from "@components/Summary.astro";
 import General from "@layouts/General.astro";
-import { shouldShowPost } from "@lib/helpers";
-import { getCollection } from "astro:content";
+import { shouldShowPost, hasTag } from "@lib/helpers";
+import { getCollection, type CollectionEntry } from "astro:content";
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection("blog");
@@ -11,12 +12,35 @@ export async function getStaticPaths() {
       .map((entry) => entry.data.tags)
       .flat(),
   );
-  return Array.from(tags, (tag) => ({ params: { slug: tag }, props: { tag } }));
+
+  return await Promise.all(Array.from(tags, async (tag) => {
+    const posts = (await getCollection("blog"))
+      .filter(shouldShowPost)
+      .filter(hasTag(tag));
+
+    return { params: { slug: tag }, props: { tag, posts } }
+  }));
 }
 
-const { tag } = Astro.props;
+interface Props {
+  tag: string;
+  posts: CollectionEntry<"blog">[]
+}
+
+const { tag, posts } = Astro.props;
 ---
 
 <General title={`${tag} posts`}>
   {tag}
+  {
+    posts.map((post) => (
+      <Summary
+        url={`/posts/${post.slug}`}
+        description={post.data.description}
+        date={post.data.pubDate}
+        title={post.data.title}
+        tags={post.data.tags}
+      />
+    ))
+  }
 </General>
