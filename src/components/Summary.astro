@@ -28,11 +28,11 @@ const { url, date, title, tags, description } = Astro.props;
       </time>
     </a>
   </div>
-  <div class="mt-3">
-    <h2 class="font-medium inline mr-1">
-      <a href={url} class="underline decoration-white/60" data-astro-prefetch>{title}</a>
+  <div class="mt-3 leading-4 mb-2">
+    <h2 class="font-medium inline mr-1 leading-5">
+      <a href={url} class="underline decoration-white/30 decoration-1 underline-offset-3" data-astro-prefetch>{title}</a>
     </h2>
-    <i class="space-x-2">
+    <span class="tags space-x-2 font-mono">
       {
         tags.map((tag) => (
           <a data-astro-prefetch href={`/tags/${tag}`}>
@@ -40,7 +40,7 @@ const { url, date, title, tags, description } = Astro.props;
           </a>
         ))
       }
-    </i>
+    </span>
   </div>
   {description}
 </div>

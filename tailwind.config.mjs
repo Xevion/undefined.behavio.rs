@@ -4,6 +4,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
+        source: ["Source Serif 4", "serif"],
+        serif: ["CMU Serif", "serif"],
         mono: ["CMU Typewriter Text", "monospace"],
       }
     },
