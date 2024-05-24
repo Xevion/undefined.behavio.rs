@@ -142,10 +142,10 @@ hr {
 // Link colors within articles generally, or direct children of span
 article,
 span {
-  &.tags > a {
+  &.tags a {
     color: #a8cbff; 
   }
-  > a {
+  a {
     color: #90bcff;
   }
 }
