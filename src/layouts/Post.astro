@@ -79,15 +79,15 @@ const ogp: SEOProps = {
 ---
 
 <General title={title} ogp={ogp}>
-  <div class="max-w-3xl mx-4">
-    <h1>
+  <div>
+    <h1 class="max-md:text-lg">
       <a href={post.slug}>
         {title}
       </a>
     </h1>
     <p class="mt-0 text-sm ml-5">
       <Time time={pubDate} client:load />
-      <span class="ml-1 space-x-2">
+      <span class="ml-1 space-x-2 max-sm:break-all">
         {
           tags.map((tag, i) =>
             // Ignore required due to whitespace sensitive content
