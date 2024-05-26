@@ -22,7 +22,12 @@ h6 {
     padding: 0.1rem 0.27rem;
     border-radius: 3px;
     border: 1px solid rgba(white, 0.4);
-    white-space: nowrap;
+    
+    // On really small viewports, word wrapping can be pretty bad with monospaced codeblocks; this allows them to wrap with impunity.
+    word-break: break-all;
+    @screen sm {
+      white-space: nowrap;
+    }
   }
 }
 
@@ -49,6 +54,7 @@ div[data-rehype-pretty-code-fragment] {
   background-color: #161616 !important;
   > pre {
     > code {
+      overflow-x: auto;
       padding: 0.5em 0;
       
       > span[data-line] {
