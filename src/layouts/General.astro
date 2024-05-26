@@ -19,17 +19,17 @@ const { title, ogp } = Astro.props;
 <Base title={title} ogp={ogp}>
   <Header className="mt-5 mb-3" />
   <nav
-    class="text-center text-xl text-[#808080] [&>a]:text-white [&>a]:underline decoration-white/85 [&>span]:select-none"
+    class="text-center text-sm md:text-xl text-white [&>span]:text-[#808080] [&>a]:underline [&>a]:decoration-white/50 [&>span]:select-none [&>a]:text-nowrap"
   >
-    <a href="/">~/</a>
-    <span>:</span>
-    <a href="https://xevion.dev">~/about/</a>
-    <span>:</span>
-    <a href="https://xevion.dev/projects">~/projects/</a>
-    <span>:</span>
-    <a href="https://xevion.dev/resume">~/resume/</a>
+    <a href="/" aria-label="Link to Home">~/</a>
+    <span aria-hidden="true">:</span>
+    <a href="https://xevion.dev" aria-label="About Me">~/about/</a>
+    <span aria-hidden="true">:</span>
+    <a href="https://xevion.dev/projects" aria-label="My Projects">~/projects/</a>
+    <span aria-hidden="true">:</span>
+    <a href="https://xevion.dev/resume" aria-label="My Resume">~/resume/</a>
   </nav>
-  <div class="max-w-screen-lg">
+  <div class="max-w-full">
     <slot name="default" />
   </div>
   <footer class="text-center">
