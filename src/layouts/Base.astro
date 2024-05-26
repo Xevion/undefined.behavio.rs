@@ -3,7 +3,6 @@ import "@styles/global.scss";
 import "@styles/fonts.scss";
 import { ViewTransitions } from "astro:transitions";
 import { SEO, type Props as SEOProps } from "astro-seo";
-import OpenGraphArticleTags from "node_modules/astro-seo/src/components/OpenGraphArticleTags.astro";
 
 interface Props {
   title?: string;
@@ -107,7 +106,7 @@ const linkedDataTag = "<script type='application/ld+json'>" + JSON.stringify(lin
     <link rel="alternate" type="application/xml" href="/feed.xml" />
     <ViewTransitions />
   </head>
-  <body class="flex flex-col w-full max-w-full min-h-screen">
+  <body class="flex flex-col min-h-screen w-full sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg mx-auto px-3 md:px-4">
     <slot />
   </body>
 </html>
