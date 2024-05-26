@@ -90,8 +90,9 @@ const text = propText ?? "undefined behaviors";
     }
   }
 </style>
-<header class:list={["text-5xl text-center lowercase", className]}>
-  <div class="stack" style="--stacks: 3;">
+<header class:list={["text-3xl md:text-4xl lg:text-5xl text-center lowercase", className]}>
+  <span class="sr-only">{text}</span>
+  <div class="stack" style="--stacks: 3;" aria-hidden="true">
     <span style="--index: 0;">{text}</span>
     <span style="--index: 1;">{text}</span>
     <span style="--index: 2;">{text}</span>
