@@ -34,32 +34,29 @@ html {
   margin: 0;
   overflow-y: scroll;
   text-rendering: optimizeLegibility;
-
-  @include for-size(phone-only) {
-    font-size: 10pt;
-  }
-  @include for-size(tablet-portrait-up) {
-    font-size: 12pt;
-  }
-  @include for-size(tablet-landscape-up) {
-    font-size: 14pt;
-  }
-  @include for-size(desktop-up) {
-    font-size: 16pt;
-  }
-  @include for-size(big-desktop-up) {
-    font-size: 18pt;
-  }
 }
 
 :root {
-  font-family: "Source Serif 4", serif;
-  font-size: 23px;
+  @apply font-source;
+
+  font-size: 20px;
+
+  @screen sm {
+    font-size: 21px;
+  }
+
+  @screen md {
+    font-size: 22px;
+  }
+
+  @screen lg {
+    font-size: 23px;
+  }
+
   line-height: 1.5;
 }
 
 body {
-  padding: 0;
   color: white;
   background: #0e0e0e;
   
