@@ -3,7 +3,7 @@ import General from "@layouts/General.astro";
 import Time from "@components/Time.tsx";
 import { type CollectionEntry } from "astro:content";
 import type { Props as SEOProps } from "astro-seo";
-import Balancer from "react-wrap-balancer";
+import { Balancer } from "react-wrap-balancer";
 
 interface Props {
   post: CollectionEntry<"blog">;
@@ -83,8 +83,7 @@ const ogp: SEOProps = {
   <div>
     <h1 class="max-md:text-lg max-sm:text-center max-sm:border-b border-zinc-700">
       <a href={post.slug}>
-        {title}
-        <!-- <Balancer>{title}</Balancer> -->
+        <Balancer>{title}</Balancer>
       </a>
     </h1>
     <p class="mt-0 text-sm ml-5">

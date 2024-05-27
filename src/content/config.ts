@@ -12,7 +12,8 @@ const blogCollection = defineCollection({
       // I am truly lost on how TZ works in Javascript Dates.
       // I believe somehow the solution would lie here in making sure that the date offset is parsed and transmitted properly,
       // but there is no insight in how this works so far. I'm lost as fuck.
-      const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      
+      // const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
       const parsed = parse(date, "yyyy-MM-dd HH:mm:ss XX", new Date());
       // const utc = zonedTimeToUtc(parsed, timezone);
       return z.date().parse(parsed);
